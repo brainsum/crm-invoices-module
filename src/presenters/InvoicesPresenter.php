@@ -4,6 +4,7 @@ namespace Crm\InvoicesModule\Presenters;
 
 use Crm\ApplicationModule\Presenters\FrontendPresenter;
 use Crm\InvoicesModule\Forms\ChangeInvoiceDetailsFormFactory;
+use Crm\InvoicesModule\Events\InvoiceCreatedEvent;
 use Crm\InvoicesModule\InvoiceGenerator;
 use Crm\PaymentsModule\Repository\PaymentsRepository;
 use DateTime;
@@ -31,6 +32,7 @@ class InvoicesPresenter extends FrontendPresenter
             if ($payment->user->invoice == true && !$payment->user->disable_auto_invoice) {
                 if ($payment->paid_at->diff(new DateTime('now'))->days <= InvoiceGenerator::CAN_GENERATE_DAYS_LIMIT) {
                     $pdf = $this->invoiceGenerator->generate($user, $payment);
+                    $this->emitter->emit(new InvoiceCreatedEvent($payment, $pdf));
                 }
             }
         }
