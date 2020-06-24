@@ -1,13 +1,6 @@
 {snippet invoiceFormSnippet}
     <div id="invoiceFormHeader" class="additionalform-header {if $control['userInvoiceForm']['done']->value != 0}done{/if}">
-        <div class="additionalform-header-box" data-toggle="collapse" data-target="#user-invoice-form">
-            <i class="fa fa-file-text-o" aria-hidden="true"></i>
-            <div style="display: inline-block">{_invoices.component.payment_success_invoice_widget.require_invoice}</div>
-            <div class="open">{_invoices.component.payment_success_invoice_widget.fill_invoice_address}<i class="fa fa-chevron-down" aria-hidden="true"></i></div>
-            <div class="done">{_invoices.component.payment_success_invoice_widget.saved} <i class="fa fa-check" aria-hidden="true"></i></div>
-        </div>
-
-        <span class="additionalform-header-info">{_invoices.component.payment_success_invoice_widget.require_invoice_info}</span>
+        <span class="additionalform-header-info">{_invoices.component.payment_success_invoice_widget.require_invoice_info|noescape}</span>
     </div>
 
     <script n:if="$presenter->isAjax()">
