@@ -138,6 +138,7 @@ class InvoicesModule extends CrmModule
 
     public function registerUserData(UserDataRegistrator $dataRegistrator)
     {
-        $dataRegistrator->addUserDataProvider($this->getInstance(\Crm\InvoicesModule\User\InvoicesUserDataProvider::class));
+        // We don't generate pdf
+        // $dataRegistrator->addUserDataProvider($this->getInstance(\Crm\InvoicesModule\User\InvoicesUserDataProvider::class));
     }
 }

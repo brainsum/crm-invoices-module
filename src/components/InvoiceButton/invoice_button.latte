@@ -26,7 +26,7 @@
 	{/if}
 {else}
 	{if $payment->invoice}
-	   	<a target="_blank" class="btn btn-sm btn-primary" href="{plink :Invoices:Invoices:DownloadInvoice $payment->id}"><i class="fa fa-download"></i> {_invoices.frontend.invoice_button.download}</a>
+	   	{_invoices.frontend.invoice_generated.info}
 	{elseif $payment->paid_at && $payment->paid_at->diff(new \DateTime())->days > $canGenerateDaysLimit}
 		<span class="btn btn-sm btn-default disabled">{_invoices.frontend.invoice_button.not_available_anymore}</span>
 	{elseif $paymentInvoicable}

@@ -51,7 +51,7 @@ services:
 	- Crm\InvoicesModule\Seeders\AddressTypesSeeder
 	- Crm\InvoicesModule\Seeders\PaymentGatewaysSeeder
 
-	- Crm\InvoicesModule\User\InvoicesUserDataProvider
+	# - Crm\InvoicesModule\User\InvoicesUserDataProvider
 
 	paymentInvoiceProvider:
 		setup:

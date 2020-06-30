@@ -114,12 +114,13 @@ class InvoiceGenerator
                 $invoice = $this->invoicesRepository->add($user, $payment, $invoiceNumber);
 
                 $this->paymentsRepository->update($payment, ['invoice_id' => $invoice->id]);
+		return true;
             }
         });
 
-        $payment = $this->paymentsRepository->find($payment->id);
+        //$payment = $this->paymentsRepository->find($payment->id);
 
-        return $this->renderInvoicePDF($user, $payment);
+        return null;
     }
 
     public function renderInvoicePDF($user, $payment)

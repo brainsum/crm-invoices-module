@@ -41,8 +41,8 @@ class InvoicesPresenter extends FrontendPresenter
             throw new BadRequestException();
         }
 
-        $this->sendResponse($pdf);
-        $this->terminate();
+        $this->flashMessage($this->translator->translate('invoices.frontend.invoice_generated.success'));
+        $this->redirect(':Payments:Payments:My');
     }
 
     private function getUserPayment($id)
